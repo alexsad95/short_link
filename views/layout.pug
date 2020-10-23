@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= `${title}`
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    //- link(rel='stylesheet', href='/css/styles.css')
+
+  body
+    .container
+      .row
+        block form
+      //- .row
+      //-   block errors
+      .row
+        block table
+
