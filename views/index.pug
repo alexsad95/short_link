@@ -23,21 +23,23 @@ block form
         id="from"
         class="form-control form-control-lg"
         name="from"
+        value="http://hh.ru"
       )
       input(type="submit" value="Submit" class="btn btn-dark")
 
 block table
   -data = data || {}
-  .table_block
-    table(class="table")
-      tr
-        th From
-        th To
-        th Date
-      each n in data
+  .table_block.col-sm
+    table(id="dtBasicExample" class="table table-bordered table-sm")
+      thead
         tr
-          td= n.from
-          td
-            a(href=n.to ) #{n.to}
-          td= new Date(n.date).toLocaleString()
-
+          th From
+          th To
+          th Date
+      tbody
+        each n in data
+          tr
+            td= n.from
+            td
+              a(href=n.to ) #{n.to}
+            td= new Date(n.date).toLocaleString()

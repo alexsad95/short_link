@@ -16,6 +16,7 @@ router.get("/", getCache, async (req, res) => {
     const links = await Links.find({ sessionId: req.session.key });
 
     if (links.length !== 0) {
+      // TODO поправить 
       // return res.json({ sessionId: req.session.key, data: links });
     }
 
