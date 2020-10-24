@@ -5,8 +5,8 @@ const config = require('config');
 const linksSchema = new Schema({
   from: {type: String, require: true},
   sessionId: {type: String, require: true},
-  to: {type: String, require: true, unique: true},
-  code: {type: String, require: true, unique: true},
+  to: {type: String, require: true},
+  code: {type: String, require: true},
   date: {type: Date, default: Date.now },
 });
 

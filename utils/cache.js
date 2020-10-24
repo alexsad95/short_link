@@ -1,7 +1,7 @@
 const client = require("../utils/redis");
 const config = require("config");
 
-const linkLimit = config.get("linkLimit") || 200;
+const linkLimit = config.get("linksLimit") || 200;
 
 /**
  * Middleware для вывода кеша и установки ограничения
@@ -23,8 +23,6 @@ function getCache(req, res, next) {
     if (req.route.path == "/" && response.length !== 0) {
       response.forEach((elem) => data.push(JSON.parse(elem)));
       return res.render('index', { title: 'Short your link', data });
-      // TODO поправить
-      // return res.json({ sessionId, data });
     } else if (req.route.path == "/add_url" && response.length >= linkLimit) {
       req.linkLimit = linkLimit;
       next();

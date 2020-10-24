@@ -15,18 +15,12 @@ router.get("/", getCache, async (req, res) => {
   try {
     const links = await Links.find({ sessionId: req.session.key });
 
-    if (links.length !== 0) {
-      // TODO поправить 
-      // return res.json({ sessionId: req.session.key, data: links });
-    }
-
-    return res.render('index', { title: 'Short your link' });
-    // return res.status(400).json({ message: "Данных нет" });
+    return res.render('index', { title: 'Short your link', data: links });
   } catch (e) {
     console.log(e);
     return res
       .status(500)
-      .json({ message: "Что-то пошло не так, попробуйте снова" });
+      .json({ error: "Что-то пошло не так" });
   }
 });
 
@@ -41,7 +35,7 @@ router.post("/add_url", getCache, async (req, res) => {
   try {
     if (typeof req.linkLimit !== "undefined") {
       return res.json({
-        message: `Нельзя указывать больше ${req.linkLimit} ссылок`,
+        error: `Нельзя указывать больше ${req.linkLimit} ссылок`,
       });
     }
     if (!req.session.key) {
@@ -55,7 +49,9 @@ router.post("/add_url", getCache, async (req, res) => {
         code: req.body.subpart,
       });
       if (sub_part) {
-        return res.json({ message: "Данный sub_part уже существует" });
+        return res.json({
+          error: 'Данный sub_part уже существует'
+        });
       }
     }
 
@@ -78,13 +74,12 @@ router.post("/add_url", getCache, async (req, res) => {
     // кеширование записи
     addCache(String(req.session.key), JSON.stringify(link));
 
-    return res.redirect('/short');
-    // return res.json({ link });
+    return res.json({link});
   } catch (e) {
     console.log(e);
     return res
       .status(500)
-      .json({ message: "Что-то пошло не так, попробуйте снова" });
+      .json({ error: "Что-то пошло не так" });
   }
 });
 

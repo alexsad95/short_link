@@ -1,31 +1,31 @@
 extends layout
 
-//- block errors
-//-   if errors
-//-     ul
-//-       for error in errors
-//-         li= error.msg
+block errors
+  .alert.alert_block.alert-warning.alert-dismissible.fade.show(role="alert")
+    | Ошибка какаясь
+    button.close(type="button" data-dismiss="alert" aria-label="Close")
+      span(aria-hidden="true") ×
 
 block form
   .form_block
     h2 Short Url App
-    form(action="/short/add_url" method="POST")
-      label(for="subpart") Subpart
-      input(
-        type="text"
-        id="subpart"
-        class="form-control form-control-lg"
-        name="subpart"
-      )
-      label(for="from") Link to short
-      input(
-        type="text"
-        id="from"
-        class="form-control form-control-lg"
-        name="from"
-        value="http://hh.ru"
-      )
-      input(type="submit" value="Submit" class="btn btn-dark")
+    label(for="subpart") Subpart
+    input(
+      type="text"
+      id="subpart"
+      maxlength="30"
+      class="form-control form-control-lg"
+      name="subpart"
+    )
+    label(for="from") Link to short
+    input(
+      type="text"
+      id="from"
+      class="form-control form-control-lg"
+      name="from"
+      value="http://hh.ru"
+    )
+    input(type="submit" value="Short link" class="btn btn-dark" id="addSubmit")
 
 block table
   -data = data || {}
@@ -42,4 +42,4 @@ block table
             td= n.from
             td
               a(href=n.to ) #{n.to}
-            td= new Date(n.date).toLocaleString()
+            td= new Date(n.date).toGMTString()
