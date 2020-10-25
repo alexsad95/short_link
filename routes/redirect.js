@@ -1,5 +1,7 @@
 const { Router } = require("express");
+const logger = require("../logger/logger");
 const Link = require("../models/Links");
+
 const router = Router();
 
 /**
@@ -16,12 +18,10 @@ router.get("/:code", async (req, res) => {
     if (link) {
       return res.redirect(link.from);
     }
-    return res.status(404).json({ message: "Ссылка не найдена" });
+    return res.status(404).json({ error: "Link not found" });
   } catch (e) {
-    console.log(e);
-    return res
-      .status(500)
-      .json({ message: "Что-то пошло не так, попробуйте снова" });
+    logger.error(e);
+    return res.status(500).json({ error: "Something went wrong" });
   }
 });
 

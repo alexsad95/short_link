@@ -36,6 +36,7 @@ const session = require("express-session");
 const redisStorage = require("connect-redis")(session);
 const client = require("./utils/redis");
 const mongoose = require("mongoose");
+const logger = require("./logger/logger");
 
 const PORT = config.get("mongoPort") || 7000;
 const app = express();
@@ -59,7 +60,7 @@ app.use(
 );
 
 // обработка статики
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 // настройка шаблонизатора
 app.set("views", path.join(__dirname, "views"));
@@ -77,9 +78,9 @@ async function main() {
       useCreateIndex: true,
     });
 
-    app.listen(PORT, () => console.log(`Server started on port ${PORT}...`));
+    app.listen(PORT, () => logger.info(`Server started on port ${PORT}`));
   } catch (e) {
-    console.log("Server Error", e.message);
+    logger.error(`Server Error: ${e.message}`);
     process.exit(1);
   }
 }

@@ -2,3 +2,4 @@ node_modules/
 yarn.lock
 config/
 /package-lock.json
+log_files*.log

@@ -22,7 +22,7 @@ function getCache(req, res, next) {
 
     if (req.route.path == "/" && response.length !== 0) {
       response.forEach((elem) => data.push(JSON.parse(elem)));
-      return res.render('index', { title: 'Short your link', data });
+      return res.render("index", { title: "Short your link", data });
     } else if (req.route.path == "/add_url" && response.length >= linkLimit) {
       req.linkLimit = linkLimit;
       next();
