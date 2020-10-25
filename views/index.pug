@@ -2,12 +2,14 @@ extends layout
 
 block errors
   .alert.alert_block.alert-warning.alert-dismissible.fade.show(role="alert")
-    | Ошибка какаясь
+    .alert-icon.d-flex.justify-content-center.align-items-center.flex-grow-0.flex-shrink-0.py-3
+      i.fas.fa-bullhorn
+      | Some error
     button.close(type="button" data-dismiss="alert" aria-label="Close")
       span(aria-hidden="true") ×
 
 block form
-  .form_block
+  .form_block.col-lg
     h2 Short Url App
     label(for="subpart") Subpart
     input(
@@ -29,7 +31,7 @@ block form
 
 block table
   -data = data || {}
-  .table_block.col-sm
+  .table_block
     table(id="dtLinksTable" class="table table-bordered table-sm")
       thead
         tr

@@ -1,10 +1,10 @@
-const { Router } = require("express");
 const config = require("config");
 const shortid = require("shortid");
-const Links = require("../models/Links");
+const { Router } = require("express");
+const { validationResult } = require("express-validator");
 const { getCache, addCache } = require("../utils/cache");
 const { validate } = require("../validators/validate");
-const { validationResult } = require("express-validator");
+const Links = require("../models/Links");
 const logger = require("../logger/logger");
 
 const router = Router();

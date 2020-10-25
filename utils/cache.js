@@ -1,5 +1,5 @@
-const client = require("../utils/redis");
 const config = require("config");
+const client = require("../utils/redis");
 
 const linkLimit = config.get("linksLimit") || 200;
 
@@ -12,7 +12,6 @@ function getCache(req, res, next) {
     next();
     return;
   }
-
   const sessionId = req.session.key;
 
   // если роут '/' выводит все ссылки с кэша

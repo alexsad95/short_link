@@ -1,0 +1,9 @@
+{
+  "host": "127.0.0.1",
+  "mongoPort": 7000,
+  "mongoUri": "mongodb+srv://<username>:<passwort>@mongocluster.ckrq5.mongodb.net/<your_collection>",
+  "baseUrl": "http://localhost:7000",
+  "redisPort": 6379,
+  "timeLiveLink": 1000,
+  "linksLimit": 20
+}

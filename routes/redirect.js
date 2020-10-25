@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const logger = require("../logger/logger");
 const Link = require("../models/Links");
+const logger = require("../logger/logger");
 
 const router = Router();
 

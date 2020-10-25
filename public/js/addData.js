@@ -32,12 +32,14 @@ addSubmit.addEventListener("click", (_) => {
     if (data.error) {
       $(".alert_block").text(data.error).show().delay(2000).fadeOut("slow");
     } else if (data.link) {
-      let table = $('#dtLinksTable').DataTable();
-      table.row.add([
-        data.link.from,
-        data.link.to,
-        new Date(data.link.date).toGMTString(),
-      ]).draw( false );
+      let table = $("#dtLinksTable").DataTable();
+      table.row
+        .add([
+          data.link.from,
+          data.link.to,
+          new Date(data.link.date).toGMTString(),
+        ])
+        .draw(false);
     }
   });
 });

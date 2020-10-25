@@ -2,7 +2,6 @@ doctype html
 html
   head
     title= `${title}`
-    link(rel='stylesheet', href='/css/font-awesome.min.css')
     link(rel='stylesheet', href='/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/main.css')
     link(rel='stylesheet', href='/css/mdb.min.css')
@@ -11,8 +10,9 @@ html
 
   body
     .container
-      block errors
       .row
+        block errors
+      .row.main_block
         block form
         block table
 

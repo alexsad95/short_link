@@ -1,42 +1,12 @@
-/*
---------------TODO проекта------------
---------------------------------------
-Обязательные требования:
-+ Приложение НЕ содержит авторизации
-+ Приложение отслеживает юзеров по сессии, т.е. у каждого юзера свой набор редиректов (правил)
-+ Данные хранятся в MongoDB
-+ При заходе на сжатый URL приложение редиректит на соответствующий URL (который был сжат)
-+ Пользователь по желанию может указать свой <subpart>. Если такой <subpart> уже используется, нужно сообщить об этом юзеру
-  + сделать проверку на существующий
-+ Реализация на NodeJS (Express)
-+ Кэширование редиректов в редисе
-+ Очистка старых правил по расписанию
-  + очистка в редисе 
-  + очистка в монго 
-+ ограничить кол-во записей на сессию (от спама ссылок)(10 ссылок)
-
-+ интерфейс, клиентская часть, страница, форма, таблица с паг.
-    + верстка
-    + стили
-    + пагинация
-    + добавл. алерта на ошибки
-    + есть недочёт при добавлении ссылки таблица не обновляется 
-      (исправил найдя метод .row.add())
-+ валидация, проверки, обработка ошибок
-+ документация, комменты
-
-- логгирование
-- докеризация, компос
-*/
 const path = require("path");
-const express = require("express");
 const config = require("config");
-const bodyParser = require("body-parser");
+const express = require("express");
 const session = require("express-session");
+const bodyParser = require("body-parser");
 const redisStorage = require("connect-redis")(session);
-const client = require("./utils/redis");
 const mongoose = require("mongoose");
 const logger = require("./logger/logger");
+const client = require("./utils/redis");
 
 const PORT = config.get("mongoPort") || 7000;
 const app = express();
