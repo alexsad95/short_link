@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $('#dtBasicExample').DataTable({
+  $('#dtLinksTable').DataTable({
     "paging": true,
     "pagingType": "simple_numbers",
     "searching": true,

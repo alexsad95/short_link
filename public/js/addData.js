@@ -32,17 +32,12 @@ addSubmit.addEventListener("click", (_) => {
     if (data.error) {
       $(".alert_block").text(data.error).show().delay(2000).fadeOut("slow");
     } else if (data.link) {
-      const currentTable = $("#dtBasicExample tbody tr.odd");
-      if (currentTable.length === 1) {
-        currentTable.remove();
-      }
-      const markup = `<tr>
-        <td>${data.link.from}</td>
-        <td>${data.link.to}</td>
-        <td>${new Date(data.link.date).toGMTString()}</td>
-        </tr>`;
-      const tableBody = $("table tbody");
-      tableBody.append(markup);
+      let table = $('#dtLinksTable').DataTable();
+      table.row.add([
+        data.link.from,
+        data.link.to,
+        new Date(data.link.date).toGMTString(),
+      ]).draw( false );
     }
   });
 });
