@@ -6,7 +6,7 @@ Before starting the application, you must install all dependencies:
 
 `yarn install`
 
-After that you need to rename `default*.json` to `default.json`, then enter your data. Make sure that Redis and MongoDB are installed and accessible.
+After that you need to rename `default-example.json` to `default.json`, then enter your data. Make sure that Redis and MongoDB are installed and accessible.
 
 After that in the project directory, you can run:
 
